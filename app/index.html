@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SoftUni App</title>
+	<link rel="stylesheet" type="text/css" href="css\bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="css\bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css\app.css"/>
+</head>
+<body ng-app="softUniModule" ng-controller="SoftUniController">
+
+
+ 
+<div class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand">SoftUni App</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+          	<li>
+              <a href="#/ads">All Publish ads</a>
+            </li>
+            <li>
+              <a href="#/login">login</a>
+            </li>
+            <li>
+              <a href="#/register">Register</a>
+            </li>
+          </ul>
+        </div>
+    </div>
+</div>
+    
+    
+
+<div ng-view class="jumbotron">
+	
+</div>
+
+<script type="text/javascript" src="lib/angular/angular.js"></script>
+<script type="text/javascript" src="lib/angular/angular-route.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/controllers/MainController.js"></script>
+<script type="text/javascript" src="js/services/mainPage.js"></script>
+</body>
+</html>
