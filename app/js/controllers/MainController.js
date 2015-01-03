@@ -17,15 +17,30 @@ softUni.controller('SoftUniController', function($scope, mainData){
 
 	function setCurrCategory(cat, catName){
 		$scope.currentCategory=cat;
-		$scope.currentCategoryName = catName;
+		if(catName){
+			$scope.currentCategoryName = catName;
+		}
+		else{
+			$scope.currentCategoryName = "All";
+		}
+		
 	}
 	
 	$scope.setCurrCategory = setCurrCategory;
 
 	$scope.currentTown = undefined;
+	$scope.currentTownName = "All";
 
-	function setCurrTown(town){
+	function setCurrTown(town, townName){
 		$scope.currentTown=town;
+
+		if(townName){
+			$scope.currentTownName = townName;
+		}
+		else{
+			$scope.currentTownName = "All";
+		}
+		
 	}
 	
 	$scope.setCurrTown = setCurrTown;
@@ -34,6 +49,7 @@ softUni.controller('SoftUniController', function($scope, mainData){
 		$scope.currentCategory = undefined;
 		$scope.currentCategoryName = "All";
 		$scope.currentTown = undefined;
+		$scope.currentTownName = "All";
 	}
 });
 

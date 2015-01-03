@@ -1,9 +1,11 @@
 <div class="jumbotron">
-	<span>Category:{{currentCategory}}</span>
+	<div class="container well">Show Results for Category: {{currentCategoryName}} and Town {{currentTownName}}</div>
 	<div class="row">
 		<div class = "col-md-9">
 			<ul id="ul">
-				<li ng-repeat = "ad in data.ads | filter: {categoryId:currentCategory}">
+				<li ng-repeat = "ad in data.ads | 
+				filter: {categoryId:currentCategory} | 
+				filter: {townId:currentTown} ">
 					<div class="container well">
 						<div class="row">
 							<div class="col-md-7">
@@ -61,7 +63,6 @@
                   <h3 class="panel-title">Categories</h3>
                 </div>
                 <ul id="ul">
-
                 	<div class="panel-body">
                 		<li><a ng-click="setCurrCategory(undefined, undefined)" href="">ALL</a></li>
                 		<div ng-repeat="cat in categories">
@@ -71,13 +72,19 @@
                 </ul>
                 
             </div>
-			<div class="panel panel-primary">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                   <h3 class="panel-title">Towns</h3>
                 </div>
-                <div class="panel-body" ng-repeat="town in towns">
-            		{{town.name}}
-                </div>
+                <ul id="ul">
+                	<div class="panel-body">
+                		<li><a ng-click="setCurrTown(undefined, undefined)" href="">ALL</a></li>
+                		<div ng-repeat="town in towns">
+            			<li><a ng-click="setCurrTown(town.id, town.name)" href="">{{town.name}}</a></li>
+            			</div>
+                	</div>
+                </ul>
+                
             </div>
 		</div>
 	</div>
