@@ -11,4 +11,13 @@ softUni.controller('SoftUniController', function($scope, mainData){
 	mainData.getAllCategories(function(resp){
 		$scope.categories=resp;
 	});
+
+	$scope.currentCategory = null;
+
+	function setCurrCategory(cat){
+		$scope.currentCategory=cat;
+	}
+	
+	$scope.setCurrCategory = setCurrCategory;
 });
+

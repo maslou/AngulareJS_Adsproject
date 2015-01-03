@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class = "col-md-9">
 			<ul id="ul">
-				<li ng-repeat = "ad in data.ads">
+				<li ng-repeat = "ad in data.ads | filter: {categoryId:currentCategory}">
 					<div class="container well">
 						<div class="row">
 							<div class="col-md-7">
@@ -59,9 +59,12 @@
                 <div class="panel-heading">
                   <h3 class="panel-title">Categories</h3>
                 </div>
-                <div class="panel-body" ng-repeat="cat in categories">
-            		{{cat.name}}
-                </div>
+                <ul id="ul">
+                	<div class="panel-body" ng-repeat="cat in categories">
+            			<li><a ng-click="setCurrCategory(cat.id)" href="">{{cat.name}}</a></li>
+                	</div>
+                </ul>
+                
             </div>
 			<div class="panel panel-primary">
                 <div class="panel-heading">

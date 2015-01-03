@@ -6,4 +6,10 @@
 	width: 100%;
 	height: 100%;
 	border-radius: 5px;
+	
+}
+.image-container1{
+	width: 200px;
+	height: 300px;
+	background: white;
 }
