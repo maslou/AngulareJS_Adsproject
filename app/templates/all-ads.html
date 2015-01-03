@@ -4,8 +4,8 @@
 		<div class = "col-md-9">
 			<ul id="ul">
 				<li ng-repeat = "ad in data.ads | 
-				filter: {categoryId:currentCategory} | 
-				filter: {townId:currentTown} ">
+				filter: {categoryId:currentCategory} :true | 
+				filter: {townId:currentTown} :true">
 					<div class="container well">
 						<div class="row">
 							<div class="col-md-7">
