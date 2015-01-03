@@ -1,4 +1,5 @@
 <div class="jumbotron">
+	<span>Category:{{currentCategory}}</span>
 	<div class="row">
 		<div class = "col-md-9">
 			<ul id="ul">
@@ -60,8 +61,12 @@
                   <h3 class="panel-title">Categories</h3>
                 </div>
                 <ul id="ul">
-                	<div class="panel-body" ng-repeat="cat in categories">
-            			<li><a ng-click="setCurrCategory(cat.id)" href="">{{cat.name}}</a></li>
+
+                	<div class="panel-body">
+                		<li><a ng-click="setCurrCategory(undefined, undefined)" href="">ALL</a></li>
+                		<div ng-repeat="cat in categories">
+            			<li><a ng-click="setCurrCategory(cat.id, cat.name)" href="">{{cat.name}}</a></li>
+            			</div>
                 	</div>
                 </ul>
                 

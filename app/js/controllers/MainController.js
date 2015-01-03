@@ -12,12 +12,28 @@ softUni.controller('SoftUniController', function($scope, mainData){
 		$scope.categories=resp;
 	});
 
-	$scope.currentCategory = null;
+	$scope.currentCategory = undefined;
+	$scope.currentCategoryName = "All";
 
-	function setCurrCategory(cat){
+	function setCurrCategory(cat, catName){
 		$scope.currentCategory=cat;
+		$scope.currentCategoryName = catName;
 	}
 	
 	$scope.setCurrCategory = setCurrCategory;
+
+	$scope.currentTown = undefined;
+
+	function setCurrTown(town){
+		$scope.currentTown=town;
+	}
+	
+	$scope.setCurrTown = setCurrTown;
+
+	$scope.resetCategoryAndTown = function(){
+		$scope.currentCategory = undefined;
+		$scope.currentCategoryName = "All";
+		$scope.currentTown = undefined;
+	}
 });
 
