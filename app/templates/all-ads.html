@@ -1,63 +1,80 @@
 <div class="jumbotron">
-	<div class="container well">Show Results for Category: {{currentCategoryName}} and Town {{currentTownName}}</div>
 	<div class="row">
-		<div class = "col-md-9">
-			<ul id="ul">
-				<li ng-repeat = "ad in data.ads | 
-				filter: {categoryId:currentCategory} :true | 
-				filter: {townId:currentTown} :true">
-					<div class="container well">
-						<div class="row">
-							<div class="col-md-7">
-								<h3 class="pull-left">
-									{{ad.title}}
-								</h3>
-							</div>
-							<div class="col-md-5">
-								<span class="pull-right">
-									{{ad.date | date: "d-MMM-yyyy"}}
-								</span>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-4">
-								<div class="image-container">
-									<img src="" ng-src="{{ad.imageDataUrl}}" class="_fullHD">
+		<div class = "col-md-2">
+			<div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Towns</h3>
+                </div>
+                <ul id="ul">
+                	<div class="panel-body">
+                		<li><a ng-click="setCurrTown(undefined, undefined)" href="">ALL</a></li>
+                		<div ng-repeat="town in towns">
+            			<li><a ng-click="setCurrTown(town.id, town.name)" href="">{{town.name}}</a></li>
+            			</div>
+                	</div>
+                </ul>
+            </div>
+		</div>
+		<div class = "col-md-8">
+			<div class="container well">Show Results for Category: {{currentCategoryName}} and Town {{currentTownName}}</div>
+			<div class="container well">
+				<ul id="ul">
+					<li ng-repeat = "ad in data.ads | 
+					filter: {categoryId:currentCategory} :true | 
+					filter: {townId:currentTown} :true">
+						<div class="container well">
+							<div class="row">
+								<div class="col-md-7">
+									<h3 class="pull-left">
+										{{ad.title}}
+									</h3>
+								</div>
+								<div class="col-md-5">
+									<span class="pull-right">
+										{{ad.date | date: "d-MMM-yyyy"}}
+									</span>
 								</div>
 							</div>
-							<div class="col-md-8">
-								<div class="well">
-									{{ad.text}}
+							<div class="row">
+								<div class="col-md-4">
+									<div class="image-container">
+										<img src="" ng-src="{{ad.imageDataUrl}}" class="_fullHD">
+									</div>
 								</div>
-								<div class="row">
-									<div class="col-md-9">
-										<div class="panel panel-default">
-										<div class="panel-heading">Name:</div>
-											<div class="panel-body">
-	                							{{ad.ownerName}}
-	                						</div>
-										</div>
-										<div class="panel panel-default">
-											<div class="panel-heading">Email:</div>
-											<div class="panel-body">
-	                							{{ad.ownerEmail}}
-	                						</div>
-										</div>
-										<div class="panel panel-default">
-											<div class="panel-heading">Tel:</div>
-											<div class="panel-body">
-	                							{{ad.ownerPhone}}
-	                						</div>
+								<div class="col-md-8">
+									<div class="well">
+										{{ad.text}}
+									</div>
+									<div class="row">
+										<div class="col-md-9">
+											<div class="panel panel-default">
+											<div class="panel-heading">Name:</div>
+												<div class="panel-body">
+		                							{{ad.ownerName}}
+		                						</div>
+											</div>
+											<div class="panel panel-default">
+												<div class="panel-heading">Email:</div>
+												<div class="panel-body">
+		                							{{ad.ownerEmail}}
+		                						</div>
+											</div>
+											<div class="panel panel-default">
+												<div class="panel-heading">Tel:</div>
+												<div class="panel-body">
+		                							{{ad.ownerPhone}}
+		                						</div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</li>
-			</ul>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<div class = "col-md-3">
+		<div class = "col-md-2">
 			<div class="panel panel-primary">
                 <div class="panel-heading">
                   <h3 class="panel-title">Categories</h3>
@@ -70,21 +87,6 @@
             			</div>
                 	</div>
                 </ul>
-                
-            </div>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Towns</h3>
-                </div>
-                <ul id="ul">
-                	<div class="panel-body">
-                		<li><a ng-click="setCurrTown(undefined, undefined)" href="">ALL</a></li>
-                		<div ng-repeat="town in towns">
-            			<li><a ng-click="setCurrTown(town.id, town.name)" href="">{{town.name}}</a></li>
-            			</div>
-                	</div>
-                </ul>
-                
             </div>
 		</div>
 	</div>

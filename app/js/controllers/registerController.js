@@ -19,6 +19,6 @@ softUni.controller('RegisterController', function($scope, mainData,  $location){
 
 			$scope.dataLoading = false;
 			
-			//$location.path('/ads');
+			$location.path('/user/home');
 		};
 });

@@ -11,7 +11,13 @@ var softUni = angular.module('softUniModule', ['ngRoute'])
 		});
 
 		$routeProvider.when('/ads', {
-			templateUrl: 'templates/all-ads.html'
+			templateUrl: 'templates/all-ads.html',
+			controller: 'SoftUniController'
+		});
+		
+		$routeProvider.when('/user/home', {
+			templateUrl: 'templates/all-ads.html',
+			controller: 'SoftUniController'
 		});
 
 		$routeProvider.otherwise({redirectTo: '/ads'});
