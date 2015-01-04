@@ -1,16 +1,23 @@
 softUni.controller('RegisterController', function($scope, mainData,  $location){
 		$scope.register = function(){
 			$scope.dataLoading = true;
-			
-			console.log($scope.username);
-			console.log($scope.password);
-			console.log($scope.confirmPassword);
-			console.log($scope.name);
-			console.log($scope.email);
-			console.log($scope.phone);
-			console.log($scope.town);
-			
+			mainData.register(
+				function(resp){
+					console.log(resp);
+				},
+				$scope.username,
+				$scope.password,
+				$scope.confirmPassword,
+				$scope.name,
+				$scope.email,
+				$scope.phone,
+				$scope.town,
+				function(errormsg){
+					$scope.error=errormsg;
+				})
 
+			$scope.dataLoading = false;
+			
 			$scope.dataLoading = false;
 			//$location.path('/ads');
 		};
