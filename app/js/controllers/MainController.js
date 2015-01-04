@@ -13,15 +13,6 @@ softUni.controller('SoftUniController', function($scope, mainData){
 	});
 
 
-
-
-
-
-
-
-
-
-
 	$scope.currentCategory = undefined;
 	$scope.currentCategoryName = "All";
 
