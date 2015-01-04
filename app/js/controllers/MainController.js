@@ -12,6 +12,16 @@ softUni.controller('SoftUniController', function($scope, mainData){
 		$scope.categories=resp;
 	});
 
+
+
+
+
+
+
+
+
+
+
 	$scope.currentCategory = undefined;
 	$scope.currentCategoryName = "All";
 
@@ -39,11 +49,9 @@ softUni.controller('SoftUniController', function($scope, mainData){
 		else{
 			$scope.currentTownName = "All";
 		}
-		
 	}
 	
 	$scope.setCurrTown = setCurrTown;
-
 	$scope.resetCategoryAndTown = function(){
 		$scope.currentCategory = undefined;
 		$scope.currentCategoryName = "All";
@@ -51,9 +59,5 @@ softUni.controller('SoftUniController', function($scope, mainData){
 		$scope.currentTownName = "All";
 	}
 
-	$scope.login = function(){
-		$scope.dataLoading = true;
-		console.log("login");
-	};
 });
 
