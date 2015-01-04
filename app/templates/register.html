@@ -30,13 +30,15 @@
             <div class="form-group">
               <label for="name" class="col-lg-3 control-label">Name</label>
               <div class="col-sm-7">
-                <input name="name" class="form-control" id="inputName" placeholder="Name" type="text" ng-model="name">
+                <input name="name" class="form-control" id="inputName" placeholder="Name" type="text" ng-model="name" required>
+                <span ng-show="formregister.name.$dirty && formregister.name.$error.required" class="help-block">Name is required</span>
               </div>
             </div>
             <div class="form-group">
               <label for="inputEmail" class="col-lg-3 control-label">Email</label>
               <div class="col-sm-7">
-                <input name="email" class="form-control" id="inputEmail" placeholder="Email" type="email" ng-model="email">
+                <input name="email" class="form-control" id="inputEmail" placeholder="Email" type="email" ng-model="email" required>
+                <span ng-show="formregister.email.$dirty && formregister.email.$error.required" class="help-block">Email is required</span>
               </div>
             </div>
             <div class="form-group">
@@ -49,7 +51,8 @@
               <label for="town" class="col-lg-3 control-label">Town</label>
               <div class="col-sm-7">
                 <select name="town" class="form-control" id="inputTown" ng-model="town">
-                  <option ng-repeat="town in towns">{{town.id}}</option>
+                  <option></option>
+                  <option value={{town.id}} ng-repeat="town in towns">{{town.name}}</option>
                 </select>
                 <br>
               </div>
