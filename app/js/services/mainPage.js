@@ -36,6 +36,22 @@ softUni.factory('mainData', function($http, $log){
 			})
 
 		},
+
+		login: function(success, user, pass, error){
+			$http({
+				method: 'POST', 
+				url: 'http://softuni-ads.azurewebsites.net/api/user/login',
+				params: {username:user, password:pass}
+			})
+			.success(function(data, status, headers, config){
+				success(data);
+			})
+			.error(function(data, status, headers, config){
+				$log.warn(data);
+				error(data.error_description)
+			})
+
+		},
 	}
 });
 

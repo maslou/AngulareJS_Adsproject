@@ -2,6 +2,7 @@
   <div class = "col-md-4"></div>
   <div class = "col-md-4">
     <div class="well bs-component">
+      <div ng-show="error" class="alert alert-danger">{{error}}</div>
       <form class="form-horizontal" name="form" ng-submit="login()" role="form">
           <fieldset>
             <legend>Login</legend>
