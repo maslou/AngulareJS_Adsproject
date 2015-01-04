@@ -1,10 +1,11 @@
 softUni.factory('mainData', function($http, $log){
+	var UserData;
 	return {
 		getAllAds: function(success){
 			$http({
 				method: 'GET', 
 				url: 'http://softuni-ads.azurewebsites.net/api/ads',
-				params: {PageSize:10, startpage:1}
+				params: {PageSize:5, startpage:3}
 				})
 			.success(function(data, status, headers, config){
 				success(data);
@@ -70,6 +71,3 @@ softUni.factory('mainData', function($http, $log){
 	}
 });
 
-softUni.factory('appCache', function ($cacheFactory) {
-	return $cacheFactory('appCache');
-});

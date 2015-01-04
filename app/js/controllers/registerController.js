@@ -1,10 +1,10 @@
 softUni.controller('RegisterController', function($scope, mainData,  $location){
 		$scope.register = function(){
-			$scope.error=undefined;
+			$scope.error = undefined;
 			$scope.dataLoading = true;
 			mainData.register(
 				function(resp){
-					console.log(resp);
+					$scope.userData = resp;
 				},
 				$scope.username,
 				$scope.password,

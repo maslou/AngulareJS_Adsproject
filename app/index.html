@@ -17,29 +17,28 @@
           	<li>
               <a ng-click="resetCategoryAndTown()" href="#/ads">All Publish ads</a>
             </li>
-            <li>
+            <li ng-if="(userData.username == undefined)">
               <a ng-click="resetCategoryAndTown()" href="#/login">login</a>
             </li>
+            <li ng-if="(userData.username == undefined)">
+              <a  ng-click="resetCategoryAndTown()" href="#/register">Register</a>
+            </li>
             <li>
-              <a ng-click="resetCategoryAndTown()" href="#/register">Register</a>
+              <a ng-if="userData.username" ng-click="logout()" href="#/ads">Logout</a>
             </li>
           </ul>
+          <div ng-if="userData.username" class="navbar-brand">Login as {{userData.username}}</div>
         </div>
     </div>
 </div>
-    
-    
-
 <div ng-view class="jumbotron">
-	
 </div>
 
 <script type="text/javascript" src="lib/angular/angular.js"></script>
 <script type="text/javascript" src="lib/angular/angular-route.min.js"></script>
+<script type="text/javascript" src="lib/angular/angular-cookies.min.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="js/controllers/MainController.js"></script>
 <script type="text/javascript" src="js/services/mainPage.js"></script>
-<script type="text/javascript" src="js/controllers/loginController.js"></script>
-<script type="text/javascript" src="js/controllers/registerController.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-softUni.controller('SoftUniController', function($scope, mainData){
+softUni.controller('SoftUniController', function($scope, mainData, $location, $rootScope, $cookieStore){
 	
 	mainData.getAllAds(function(resp){
 		$scope.data=resp;
@@ -11,6 +11,60 @@ softUni.controller('SoftUniController', function($scope, mainData){
 	mainData.getAllCategories(function(resp){
 		$scope.categories=resp;
 	});
+
+	function SetCredentials(uData){
+		$rootScope.userData = uData;
+		$cookieStore.put('userData', $rootScope.userData);
+	};
+
+	function ClearCredentials(){
+		$rootScope.userData = {};
+		$cookieStore.remove('userData');
+	};
+
+	$scope.login = function(){
+		$scope.error = undefined;
+		$scope.dataLoading = true;
+			
+		mainData.login(
+			function(resp){
+				SetCredentials(resp);
+			},
+			$scope.username,
+			$scope.password,
+			function(errormsg){
+				$scope.error=errormsg;
+			})
+
+			$scope.dataLoading = false;
+			$location.path('/user/home');
+			
+		}
+	$scope.register = function(){
+			$scope.error = undefined;
+			$scope.dataLoading = true;
+			mainData.register(
+				function(resp){
+					SetCredentials(resp);
+				},
+				$scope.username,
+				$scope.password,
+				$scope.confirmPassword,
+				$scope.name,
+				$scope.email,
+				$scope.phone,
+				$scope.town,
+				function(errormsg){
+					$scope.error=errormsg;
+				})
+			$scope.dataLoading = false;
+			$location.path('/user/home');
+
+	}
+
+	$scope.logout = function(){
+		ClearCredentials();
+	};
 
 
 	$scope.currentCategory = undefined;
