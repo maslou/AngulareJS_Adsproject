@@ -1,20 +1,37 @@
 softUni.controller('SoftUniController', function($scope, mainData, $location, $rootScope, $cookieStore){
 	
 	mainData.getAllAds(function(resp){
-		$scope.data=resp;
+		$scope.allads=resp;
+			if($location.path() =='/ads'){
+				$scope.showAdds=$scope.allads;
+			}
+			else{
+				$scope.showAdds=$scope.userads;
+			}
 	});
+	if($rootScope.userData.username){
+		mainData.getUserAllAds(function(resp){
+			$scope.userads=resp;
+		});
+	}
+	else{
+		$scope.userads={};
+	}
+
 
 	mainData.getAllTowns(function(resp){
+		
 		$scope.towns=resp;
 	});
 
 	mainData.getAllCategories(function(resp){
 		$scope.categories=resp;
 	});
-
+	$scope.location = $location;
 	function SetCredentials(uData){
 		$rootScope.userData = uData;
 		$cookieStore.put('userData', $rootScope.userData);
+
 	};
 
 	function ClearCredentials(){
@@ -29,6 +46,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		mainData.login(
 			function(resp){
 				SetCredentials(resp);
+				console.log(resp);
 			},
 			$scope.username,
 			$scope.password,
@@ -38,6 +56,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 
 			$scope.dataLoading = false;
 			$location.path('/user/home');
+
 			
 		}
 	$scope.register = function(){

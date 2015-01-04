@@ -19,7 +19,7 @@
 			<div class="container well">Show Results for Category: {{currentCategoryName}} and Town {{currentTownName}}</div>
 			<div class="container well">
 				<ul id="ul">
-					<li ng-repeat = "ad in data.ads | 
+					<li ng-repeat = "ad in showAdds.ads | 
 					filter: {categoryId:currentCategory} :true | 
 					filter: {townId:currentTown} :true">
 						<div class="container well">
