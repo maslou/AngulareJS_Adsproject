@@ -2,52 +2,62 @@
   <div class = "col-md-3"></div>
   <div class = "col-md-6">    
     <div class="well bs-component">
-      <form class="form-horizontal">
+    <div ng-show="error" class="alert alert-danger">{{error}}</div>
+      <form class="form-horizontal" name="formregister" ng-submit="register()" role="formregister">
           <fieldset>
             <legend>Register</legend>
             <div class="form-group">
-              <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-              <div class="col-lg-10">
-                <input class="form-control" id="inputEmail" placeholder="Email" type="text">
+              <label for="username" class="col-lg-3 control-label">Username</label>
+              <div class="col-sm-7">
+                <input name="username" class="form-control" id="inputUsername" placeholder="Username" type="text" ng-model="username" required>
+                <span ng-show="formregister.username.$dirty && formregister.username.$error.required" class="help-block">Username is required</span>
               </div>
             </div>
             <div class="form-group">
-              <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-              <div class="col-lg-10">
-                <input class="form-control" id="inputPassword" placeholder="Password" type="password">
+              <label for="inputPassword" class="col-lg-3 control-label">Password</label>
+              <div class="col-sm-7">
+                <input name="password" class="form-control" id="inputPassword" placeholder="Password" type="password" ng-model="password" required>
+                <span ng-show="formregister.password.$dirty && formregister.password.$error.required" class="help-block">Password is required</span>
               </div>
             </div>
             <div class="form-group">
-              <label for="inputConfirmPassword" class="col-lg-2 control-label">Confirm Password</label>
-              <div class="col-lg-10">
-                <input class="form-control" id="inputConfirmPassword" placeholder="Confirm Password" type="password">
+              <label for="inputConfirmPassword" class="col-lg-3 control-label">Confirm Password</label>
+              <div class="col-sm-7">
+                <input name="confirmPassword" class="form-control" id="inputConfirmPassword" placeholder="Confirm Password" type="password" ng-model="confirmPassword" required>
+                <span ng-show="formregister.confirmPassword.$dirty && formregister.confirmPassword.$error.required" class="help-block">Confirm Password is required</span>
               </div>
             </div>
             <div class="form-group">
-              <label for="textArea" class="col-lg-2 control-label">Textarea</label>
-              <div class="col-lg-10">
-                <textarea class="form-control" rows="3" id="textArea"></textarea>
-                <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+              <label for="name" class="col-lg-3 control-label">Name</label>
+              <div class="col-sm-7">
+                <input name="name" class="form-control" id="inputName" placeholder="Name" type="text" ng-model="name">
               </div>
             </div>
             <div class="form-group">
-              <label for="select" class="col-lg-2 control-label">Selects</label>
-              <div class="col-lg-10">
-                <select class="form-control" id="select">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+              <label for="inputEmail" class="col-lg-3 control-label">Email</label>
+              <div class="col-sm-7">
+                <input name="email" class="form-control" id="inputEmail" placeholder="Email" type="email" ng-model="email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="username" class="col-lg-3 control-label">Phone</label>
+              <div class="col-sm-7">
+                <input name="phone" class="form-control" id="inputPhone" placeholder="Phone" type="tel" ng-model="phone">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="town" class="col-lg-3 control-label">Town</label>
+              <div class="col-sm-7">
+                <select name="town" class="form-control" id="inputTown" ng-model="town">
+                  <option ng-repeat="town in towns">{{town.name}}</option>
                 </select>
                 <br>
               </div>
             </div>
             <div class="form-group">
-              <div class="col-lg-10 col-lg-offset-2">
-                <button class="btn btn-primary">Register</button>
-                <a href="#/login">Login here</a>
-              </div>
+              <div class="col-sm-7 col-lg-offset-3">
+                <button type="submit" ng-disabled="formregister.$invalid || dataLoading" class="btn btn-danger">Register</button>
+                <a href="#/login" class="col-lg-offset-6">Login here</a>
             </div>
           </fieldset>
       </form>
