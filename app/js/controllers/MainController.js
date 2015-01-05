@@ -45,6 +45,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		mainData.addAds(
 				function(resp){
 					$scope.showsuccess = true;
+					console.log(resp);
 				},
 				function(errormsg){
 					$scope.error=errormsg;

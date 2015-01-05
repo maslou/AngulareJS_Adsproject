@@ -103,7 +103,8 @@ softUni.factory('mainData', function($http, $log,$rootScope){
 					text: adstext,
 					imageDataUrl: adsimageDataUrl,
 					scategoryId: adscategoryId,
-					stownId: adstownId
+					stownId: adstownId,
+					ownerName: 'kalin'
 				}})
 			.success(function(data, status, headers, config){
 				success(data);
