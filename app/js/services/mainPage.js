@@ -84,6 +84,36 @@ softUni.factory('mainData', function($http, $log,$rootScope){
 			})
 
 		},
+
+		addAds: function(
+			success,
+			error,
+			adstitle,
+			adstext,
+			adsimageDataUrl,
+			adscategoryId,
+			adstownId
+			){
+			$http({
+				method: 'POST', 
+				url: 'http://softuni-ads.azurewebsites.net/api/user/register',
+				headers: {Authorization: 'Bearer ' + $rootScope.userData.access_token},
+				data: {
+					title: adstitle,
+					text: adstext,
+					imageDataUrl: adsimageDataUrl,
+					scategoryId: adscategoryId,
+					stownId: adstownId
+				}})
+			.success(function(data, status, headers, config){
+				success(data);
+			})
+			.error(function(data, status, headers, config){
+				$log.warn(data);
+				error(data.modelState)
+			})
+
+		},
 	}
 });
 

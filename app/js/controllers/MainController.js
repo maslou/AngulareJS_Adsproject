@@ -41,6 +41,22 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		$cookieStore.remove('userData');
 	};
 
+	$scope.addNewAdd = function(){
+		mainData.register(
+				function(resp){
+					SetCredentials(resp);
+				},
+				function(errormsg){
+					$scope.error=errormsg;
+				},
+				$scope.adstitle,
+				$scope.adstext,
+				$scope.adsimageDataUrl,
+				$scope.adscategoryId,
+				$scope.adstownId
+				)
+	};
+
 	$scope.login = function(){
 		$scope.error = undefined;
 		$scope.dataLoading = true;
@@ -59,7 +75,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 			$location.path('/user/home');
 
 			
-		}
+	};
 	$scope.register = function(){
 			$scope.error = undefined;
 			$scope.dataLoading = true;
