@@ -20,6 +20,11 @@ var softUni = angular.module('softUniModule', ['ngRoute', 'ngCookies'])
 			controller: 'SoftUniController'
 		});
 
+		$routeProvider.when('/user/ads/publish', {
+			templateUrl: 'templates/publish.html',
+			controller: 'SoftUniController'
+		});
+
 		$routeProvider.otherwise({redirectTo: '/ads'});
 	})
 
@@ -27,10 +32,10 @@ var softUni = angular.module('softUniModule', ['ngRoute', 'ngCookies'])
         // keep user logged in after page refresh
         $rootScope.userData = $cookieStore.get('userData') || {};
   
-        $rootScope.$on('$locationChangeStart', function (event, next, current) {
+        //$rootScope.$on('$locationChangeStart', function (event, next, current) {
             // redirect to login page if not logged in
             //if (($location.path() == '/user/home' )  && !$rootScope.userData.username) {
             //    $location.path('/ads');
            // }
-        });
+        //});
     });
