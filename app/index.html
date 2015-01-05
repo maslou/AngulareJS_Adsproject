@@ -24,8 +24,11 @@
               <a  ng-click="resetCategoryAndTown()" href="#/register">Register</a>
             </li>
             <li>
-              <a ng-if="userData.username" ng-click="logout()" href="#/ads">Logout</a>
+              <a ng-if="userData.username" href="#/user/home">My Ads</a>
             </li>
+            <li>
+              <a ng-if="userData.username" ng-click="logout()" href="#/ads">Logout</a>
+            </li>  
           </ul>
           <div ng-if="userData.username" class="navbar-brand">Login as {{userData.username}}</div>
         </div>

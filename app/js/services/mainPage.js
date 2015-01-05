@@ -5,7 +5,7 @@ softUni.factory('mainData', function($http, $log,$rootScope){
 			$http({
 				method: 'GET', 
 				url: 'http://softuni-ads.azurewebsites.net/api/ads',
-				params: {PageSize:1, startpage:1}
+				params: {PageSize:5, startpage:1}
 				})
 			.success(function(data, status, headers, config){
 				success(data);

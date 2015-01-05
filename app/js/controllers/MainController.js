@@ -9,15 +9,16 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 				$scope.showAdds=$scope.userads;
 			}
 	});
-	if($rootScope.userData.username){
-		mainData.getUserAllAds(function(resp){
-			$scope.userads=resp;
-		});
-	}
-	else{
-		$scope.userads={};
-	}
 
+	mainData.getUserAllAds(function(resp){
+		$scope.userads=resp;
+			if($location.path() =='/ads'){
+				$scope.showAdds=$scope.allads;
+			}
+			else{
+				$scope.showAdds=$scope.userads;
+			}
+	});
 
 	mainData.getAllTowns(function(resp){
 		
@@ -27,6 +28,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 	mainData.getAllCategories(function(resp){
 		$scope.categories=resp;
 	});
+
 	$scope.location = $location;
 	function SetCredentials(uData){
 		$rootScope.userData = uData;
@@ -46,7 +48,6 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		mainData.login(
 			function(resp){
 				SetCredentials(resp);
-				console.log(resp);
 			},
 			$scope.username,
 			$scope.password,
