@@ -96,7 +96,7 @@ softUni.factory('mainData', function($http, $log,$rootScope){
 			){
 			$http({
 				method: 'POST', 
-				url: 'http://softuni-ads.azurewebsites.net/api/user/register',
+				url: 'http://softuni-ads.azurewebsites.net/api/user/ads',
 				headers: {Authorization: 'Bearer ' + $rootScope.userData.access_token},
 				data: {
 					title: adstitle,

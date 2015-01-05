@@ -42,9 +42,9 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 	};
 
 	$scope.addNewAdd = function(){
-		mainData.register(
+		mainData.addAds(
 				function(resp){
-					SetCredentials(resp);
+					$scope.showsuccess = true;
 				},
 				function(errormsg){
 					$scope.error=errormsg;
