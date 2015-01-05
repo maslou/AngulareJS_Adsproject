@@ -29,7 +29,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		$scope.categories=resp;
 	});
 
-	$scope.location = $location;
+	$rootScope.location = $location;
 	function SetCredentials(uData){
 		$rootScope.userData = uData;
 		$cookieStore.put('userData', $rootScope.userData);

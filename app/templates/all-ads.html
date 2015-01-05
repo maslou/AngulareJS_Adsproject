@@ -1,7 +1,7 @@
 <div class="jumbotron">
 	<div class="row">
 		<div class = "col-md-2">
-			<div class="panel panel-primary">
+			<div ng-if ="location.path() =='/ads'" class="panel panel-primary">
                 <div class="panel-heading">
                   <h3 class="panel-title">Towns</h3>
                 </div>
@@ -75,7 +75,7 @@
 			</div>
 		</div>
 		<div class = "col-md-2">
-			<div class="panel panel-primary">
+			<div  ng-if ="location.path() =='/ads'" class="panel panel-primary">
                 <div class="panel-heading">
                   <h3 class="panel-title">Categories</h3>
                 </div>
