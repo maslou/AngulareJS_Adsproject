@@ -59,6 +59,73 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 				)
 	};
 
+	$scope.adsDeActiv = function adsDeActiv(adsId){
+		mainData.adsDeActiv(
+				function(resp){
+					$scope.showsuccess = true;
+					console.log(resp);
+				},
+				function(errormsg){
+					$scope.error=errormsg;
+				},
+				adsId
+				)
+	};
+
+	$scope.adsEdit = function adsEdit(adsId){
+		//mainData.adsEdit(
+		//		function(resp){
+		//			$scope.showsuccess = true;
+		//			console.log(resp);
+		//		},
+		//		function(errormsg){
+		//			$scope.error=errormsg;
+		//		},
+		//		adsId
+		//		)
+		$scope.error="EDIT ADS TO DO";
+	};
+
+	$scope.adsRePublish = function adsRePublish(adsId){
+		mainData.adsRePublish(
+				function(resp){
+					$scope.showsuccess = true;
+					console.log(resp);
+				},
+				function(errormsg){
+					$scope.error=errormsg;
+				},
+				adsId
+				)
+	};
+
+	$scope.adsDel = function adsDel(adsId){
+		mainData.adsDel(
+				function(resp){
+					$scope.showsuccess = true;
+					console.log(resp);
+				},
+				function(errormsg){
+					$scope.error=errormsg;
+				},
+				adsId
+				)
+	};
+
+	$scope.adsActive = function adsActive(adsId){
+		console.log(adsId)
+		mainData.adsActive(
+				function(resp){
+					$scope.showsuccess = true;
+					console.log(resp);
+				},
+				function(errormsg){
+					$scope.error=errormsg;
+				},
+				adsId
+				)
+	};	
+
 	$scope.login = function(){
 		$scope.error = undefined;
 		$scope.dataLoading = true;

@@ -118,16 +118,16 @@
 
 								<div ng-if ="location.path() =='/user/home'" class="row">
 									<div class="col-md-12">
-										<a ng-if ="ad.status =='Published'" class="btn btn-default"  href="">Deactivate</a>
+										<a ng-if ="ad.status =='Published'" ng-click="adsDeActiv(ad.id)" class="btn btn-default"  href="">Deactivate</a>
 									
-										<a ng-if ="ad.status !='Published'" class="btn btn-default"  href="">Edit</a>
+										<a ng-if ="ad.status !='Published'" class="btn btn-default" ng-click="adsEdit(ad.id)" href="#/user/ads/edit">Edit</a>
 									
 										<a ng-if ="ad.status !='Published' 
-										&& ad.status !='WaitingApproval'"  class="btn btn-default"  href="">Publish again</a>
+										&& ad.status !='WaitingApproval'" ng-click="adsRePublish(ad.id)" class="btn btn-default"  href="">Publish again</a>
 									
-										<a ng-if ="selectedStatus ==''" class="btn btn-default"  href="">Delete</a>
+										<a ng-if ="sad.status != 'Inactive'" class="btn btn-default" ng-click="adsDel(ad.id)" href="">Delete</a>
 
-										<a class="btn btn-default"  href="">Activate</a>
+										<a class="btn btn-default" ng-click="adsActive(ad.id)" href="">Activate</a>
 									
 									</div>	
 
