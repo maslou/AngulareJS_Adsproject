@@ -118,13 +118,16 @@
 
 								<div ng-if ="location.path() =='/user/home'" class="row">
 									<div class="col-md-12">
-										<a class="btn btn-default"  href="">Deactivate</a>
+										<a ng-if ="ad.status =='Published'" class="btn btn-default"  href="">Deactivate</a>
 									
-										<a class="btn btn-default"  href="">Edit</a>
+										<a ng-if ="ad.status !='Published'" class="btn btn-default"  href="">Edit</a>
 									
-										<a class="btn btn-default"  href="">Publish again</a>
+										<a ng-if ="ad.status !='Published' 
+										&& ad.status !='WaitingApproval'"  class="btn btn-default"  href="">Publish again</a>
 									
-										<a class="btn btn-default"  href="">Delete</a>
+										<a ng-if ="selectedStatus ==''" class="btn btn-default"  href="">Delete</a>
+
+										<a class="btn btn-default"  href="">Activate</a>
 									
 									</div>	
 
