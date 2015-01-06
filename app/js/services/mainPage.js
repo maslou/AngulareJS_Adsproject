@@ -25,6 +25,7 @@ softUni.factory('mainData', function($http, $log,$rootScope){
 				})
 			.success(function(data, status, headers, config){
 				success(data);
+				$log.info(data);
 			})
 			.error(function(data, status, headers, config){
 				$log.warn(data);
@@ -102,8 +103,8 @@ softUni.factory('mainData', function($http, $log,$rootScope){
 					title: adstitle,
 					text: adstext,
 					imageDataUrl: adsimageDataUrl,
-					scategoryId: adscategoryId,
-					stownId: adstownId,
+					categoryId: adscategoryId,
+					townId: adstownId,
 					ownerName: 'kalin'
 				}})
 			.success(function(data, status, headers, config){

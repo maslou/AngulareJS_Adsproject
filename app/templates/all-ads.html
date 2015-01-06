@@ -20,23 +20,25 @@
                 </div>
                 <ul id="ul">
                 	<div class="panel-body">
-                		<li><a ng-click="setCurrTown(undefined, undefined)" href="">ALL</a></li>
-                		<li><a ng-click="setCurrTown(undefined, undefined)" href="">Published</a></li>
-            			<li><a ng-click="setCurrTown(undefined, undefined)" href="">WaitingApproval</a></li>
-            			<li><a ng-click="setCurrTown(undefined, undefined)" href="">Inactive</a></li>
-            			<li><a ng-click="setCurrTown(undefined, undefined)" href="">Rejected</a></li>
-            			<li><a ng-click="setCurrTown(undefined, undefined)" href="#/user/ads/publish">Add New Adds</a></li>
+                		<li><a ng-click="setSelectedStatus(undefined)" href="">ALL</a></li>
+                		<li><a ng-click="setSelectedStatus('Published')" href="">Published</a></li>
+            			<li><a ng-click="setSelectedStatus('WaitingApproval')" href="">WaitingApproval</a></li>
+            			<li><a ng-click="setSelectedStatus('Inactive')" href="">Inactive</a></li>
+            			<li><a ng-click="setSelectedStatus('Rejected')" href="">Rejected</a></li>
+            			<li><a href="#/user/ads/publish">Add New Adds</a></li>
                 	</div>
                 </ul>
             </div>
 		</div>
 		<div class = "col-md-8">
-			<div class="container well">Show Results for Category: {{currentCategoryName}} and Town {{currentTownName}}</div>
+			<div ng-if ="location.path() =='/ads'" class="container well">Show Ads for Category: {{currentCategoryName}} and Town {{currentTownName}}</div>
+			<div ng-if ="location.path() =='/user/home'" class="container well">Show My Add in Status {{selectedStatus}}</div>
 			<div class="container well">
 				<ul id="ul">
 					<li ng-repeat = "ad in showAdds.ads | 
 					filter: {categoryId:currentCategory} :true | 
-					filter: {townId:currentTown} :true">
+					filter: {townId:currentTown} :true |
+					filter: {status: selectedStatus} : true">
 						<div class="container well">
 							<div class="row">
 								<div class="col-md-7">

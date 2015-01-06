@@ -29,6 +29,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		$scope.categories=resp;
 	});
 
+
 	$rootScope.location = $location;
 	function SetCredentials(uData){
 		$rootScope.userData = uData;
@@ -132,6 +133,15 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 			$scope.currentTownName = "All";
 		}
 	}
+
+	//$scope.selectedStatus = undefined;
+
+	$scope.setSelectedStatus = function setSelectedStatus(seladsStatus){
+		$scope.selectedStatus = seladsStatus;
+		console.log(seladsStatus);
+		console.log("here");
+	};
+
 	
 	$scope.setCurrTown = setCurrTown;
 	$scope.resetCategoryAndTown = function(){
