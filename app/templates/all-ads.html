@@ -62,20 +62,25 @@
 									<div class="well">
 										{{ad.text}}
 									</div>
-									<div class="row">
-										<div class="col-md-9">
-											<div class="panel panel-default">
-											<div class="panel-heading">Name:</div>
+
+									<div ng-if ="location.path() =='/ads'" class="row">
+										<div class="col-md-4">
+											<div  class="panel panel-default">
+												<div class="panel-heading">Name:</div>
 												<div class="panel-body">
 		                							{{ad.ownerName}}
 		                						</div>
 											</div>
-											<div class="panel panel-default">
+										</div>
+										<div class="col-md-4">
+											<div  class="panel panel-default">
 												<div class="panel-heading">Email:</div>
 												<div class="panel-body">
 		                							{{ad.ownerEmail}}
 		                						</div>
 											</div>
+										</div>
+										<div class="col-md-4">
 											<div class="panel panel-default">
 												<div class="panel-heading">Tel:</div>
 												<div class="panel-body">
@@ -84,6 +89,50 @@
 											</div>
 										</div>
 									</div>
+									<div ng-if ="location.path() =='/user/home'" class="row">
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">Category:</div>
+												<div class="panel-body">
+		                							{{ad.categoryName}}
+		                						</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">Town:</div>
+												<div class="panel-body">
+		                							{{ad.townName}}
+		                						</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-default">
+												<div class="panel-heading">Status:</div>
+												<div class="panel-body">
+		                							{{ad.status}}
+		                						</div>
+											</div>
+										</div>
+									</div>
+
+								<div ng-if ="location.path() =='/user/home'" class="row">
+									<div class="col-md-12">
+										<a class="btn btn-default"  href="">Deactivate</a>
+									
+										<a class="btn btn-default"  href="">Edit</a>
+									
+										<a class="btn btn-default"  href="">Publish again</a>
+									
+										<a class="btn btn-default"  href="">Delete</a>
+									
+									</div>	
+
+								</div>
+
+
+									
+
 								</div>
 							</div>
 						</div>

@@ -134,12 +134,10 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		}
 	}
 
-	//$scope.selectedStatus = undefined;
 
 	$scope.setSelectedStatus = function setSelectedStatus(seladsStatus){
 		$scope.selectedStatus = seladsStatus;
-		console.log(seladsStatus);
-		console.log("here");
+		
 	};
 
 	
