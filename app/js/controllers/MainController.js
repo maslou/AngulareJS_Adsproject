@@ -59,6 +59,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 				)
 	};
 
+
 	$scope.adsDeActiv = function adsDeActiv(adsId){
 		mainData.adsDeActiv(
 				function(resp){
@@ -133,6 +134,8 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		mainData.login(
 			function(resp){
 				SetCredentials(resp);
+				$scope.dataLoading = false;
+				$location.path('/user/home');
 			},
 			$scope.username,
 			$scope.password,
@@ -140,8 +143,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 				$scope.error=errormsg;
 			})
 
-			$scope.dataLoading = false;
-			$location.path('/user/home');
+			
 
 			
 	};
@@ -151,6 +153,8 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 			mainData.register(
 				function(resp){
 					SetCredentials(resp);
+					$scope.dataLoading = false;
+					$location.path('/user/home');
 				},
 				$scope.username,
 				$scope.password,
@@ -162,8 +166,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 				function(errormsg){
 					$scope.error=errormsg;
 				})
-			$scope.dataLoading = false;
-			$location.path('/user/home');
+			
 
 	}
 
