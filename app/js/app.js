@@ -20,6 +20,11 @@ var softUni = angular.module('softUniModule', ['ngRoute', 'ngCookies'])
 			controller: 'SoftUniController'
 		});
 
+		$routeProvider.when('/user/ads/edit', {
+			templateUrl: 'templates/publish.html',
+			controller: 'SoftUniController'
+		});
+
 		$routeProvider.when('/user/ads/publish', {
 			templateUrl: 'templates/publish.html',
 			controller: 'SoftUniController'

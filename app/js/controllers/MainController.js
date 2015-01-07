@@ -42,7 +42,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		$cookieStore.remove('userData');
 	};
 
-	$scope.addNewAdd = function(){
+	addNewAdd = function(){
 		mainData.addAds(
 				function(resp){
 					$scope.showsuccess = true;
@@ -58,6 +58,15 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 				$scope.adstownId
 				)
 	};
+
+	$scope.addNewAddOrEdit = function(){
+		if ($location.path() == '/user/ads/publish'){
+			addNewAdd();
+		}
+		else{
+
+		}
+	}
 
 
 	$scope.adsDeActiv = function adsDeActiv(adsId){

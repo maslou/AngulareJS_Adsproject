@@ -33,6 +33,22 @@ softUni.factory('mainData', function($http, $log,$rootScope){
 
 		},
 
+		getUserAdsById: function(success, adsId){
+			$http({
+				method: 'GET', 
+				url: 'http://softuni-ads.azurewebsites.net/api/user/ads'  + adsId,
+				headers: {Authorization: 'Bearer ' + $rootScope.userData.access_token},
+				})
+			.success(function(data, status, headers, config){
+				success(data);
+				$log.info(data);
+			})
+			.error(function(data, status, headers, config){
+				$log.warn(data);
+			})
+
+		},
+
 		adsDeActiv: function(success, error, adsId){
 			$http({
 				method: 'PUT', 
