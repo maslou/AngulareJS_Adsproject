@@ -59,13 +59,28 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 				)
 	};
 
+	$scope.onAddNewClick = function(){
+		$rootScope.adstitle = undefined;
+		$rootScope.adstext = undefined;
+		$rootScope.adsimageDataUrl = undefined;
+		$rootScope.adscategoryId = undefined;
+		$rootScope.adstownId = undefined;
+		$location.path('/user/ads/publish');
+	}
+
 	$scope.addNewAddOrEdit = function(){
+		
 		if ($location.path() == '/user/ads/publish'){
 			addNewAdd();
 		}
-		else{
-
+		else if ($location.path() == '/user/ads/edit') {
+			editAds(adsId);
 		}
+	}
+
+	function editAds(adsId){
+		
+
 	}
 
 
@@ -82,19 +97,22 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 				)
 	};
 
-	$scope.adsEdit = function adsEdit(adsId){
-		//mainData.adsEdit(
-		//		function(resp){
-		//			$scope.showsuccess = true;
-		//			console.log(resp);
-		//		},
-		//		function(errormsg){
-		//			$scope.error=errormsg;
-		//		},
-		//		adsId
-		//		)
-		$scope.error="EDIT ADS TO DO";
-	};
+	$scope.adsEdit = function(adsId){
+		$rootScope.adsId = adsId;
+		mainData.getUserAdsById(
+			function(resp){
+				$rootScope.adstitle = resp.title;
+				$rootScope.adstext = resp.text;
+				$rootScope.adsimageDataUrl = resp.imageDataUrl;
+				$rootScope.adscategoryId = resp.categoryId;
+				$rootScope.adstownId = resp.townId;
+				$location.path('/user/ads/edit');
+			}
+			,
+			$rootScope.adsId
+			);
+
+	}
 
 	$scope.adsRePublish = function adsRePublish(adsId){
 		mainData.adsRePublish(

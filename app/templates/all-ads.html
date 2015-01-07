@@ -25,7 +25,7 @@
             			<li><a ng-click="setSelectedStatus('WaitingApproval')" href="">WaitingApproval</a></li>
             			<li><a ng-click="setSelectedStatus('Inactive')" href="">Inactive</a></li>
             			<li><a ng-click="setSelectedStatus('Rejected')" href="">Rejected</a></li>
-            			<li><a href="#/user/ads/publish">Add New Adds</a></li>
+            			<li><a ng-click="onAddNewClick()" href="">Add New Adds</a></li>
                 	</div>
                 </ul>
             </div>
@@ -120,7 +120,7 @@
 									<div class="col-md-12">
 										<a ng-if ="ad.status =='Published'" ng-click="adsDeActiv(ad.id)" class="btn btn-default"  href="">Deactivate</a>
 									
-										<a ng-if ="ad.status !='Published'" class="btn btn-default" ng-click="adsEdit(ad.id)" href="#/user/ads/edit">Edit</a>
+										<a ng-if ="ad.status !='Published'" class="btn btn-default" ng-click="adsEdit(ad.id)" href="">Edit</a>
 									
 										<a ng-if ="ad.status !='Published' 
 										&& ad.status !='WaitingApproval'" ng-click="adsRePublish(ad.id)" class="btn btn-default"  href="">Publish again</a>
