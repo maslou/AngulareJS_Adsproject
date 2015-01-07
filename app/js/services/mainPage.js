@@ -68,19 +68,35 @@ softUni.factory('mainData', function($http, $log,$rootScope){
 
 		},
 
-		adsEdit: function(success, error, adsId, data){
+		adsEdit: function(
+			success,
+			error,
+			adsId,
+			adstitle,
+			adstext,
+			adsimageDataUrl,
+			adscategoryId,
+			adstownId,
+			adschangeimage
+			){
 			$http({
 				method: 'PUT', 
-				url: 'http://softuni-ads.azurewebsites.net/api/user/ads' + adsId,
+				url: 'http://softuni-ads.azurewebsites.net/api/user/ads/' + adsId,
 				headers: {Authorization: 'Bearer ' + $rootScope.userData.access_token},
-				data: data
-				})
+				data: {
+					title: adstitle,
+					text: adstext,
+					imageDataUrl: adsimageDataUrl,
+					categoryId: adscategoryId,
+					townId: adstownId,
+					changeimage: adschangeimage
+				}})
 			.success(function(data, status, headers, config){
 				success(data);
-				$log.info(data);
 			})
 			.error(function(data, status, headers, config){
 				$log.warn(data);
+				error(data.modelState)
 			})
 
 		},
@@ -200,17 +216,17 @@ softUni.factory('mainData', function($http, $log,$rootScope){
 			adstownId
 			){
 			$http({
-				method: 'POST', 
-				url: 'http://softuni-ads.azurewebsites.net/api/user/ads',
-				headers: {Authorization: 'Bearer ' + $rootScope.userData.access_token},
-				data: {
-					title: adstitle,
-					text: adstext,
-					imageDataUrl: adsimageDataUrl,
-					categoryId: adscategoryId,
-					townId: adstownId,
-					ownerName: 'kalin'
-				}})
+					method: 'POST', 
+					url: 'http://softuni-ads.azurewebsites.net/api/user/ads',
+					headers: {Authorization: 'Bearer ' + $rootScope.userData.access_token},
+					data: {
+						title: adstitle,
+						text: adstext,
+						imageDataUrl: adsimageDataUrl,
+						categoryId: adscategoryId,
+						townId: adstownId
+					}
+				})
 			.success(function(data, status, headers, config){
 				success(data);
 			})
