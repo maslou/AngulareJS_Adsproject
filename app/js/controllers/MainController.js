@@ -43,6 +43,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 	};
 
 	addNewAdd = function(){
+		console.log($scope.adstownId);
 		mainData.addAds(
 				function(resp){
 					$scope.showsuccess = true;
@@ -55,7 +56,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 				$scope.adstext,
 				$scope.adsimageDataUrl,
 				$scope.adscategoryId,
-				$scope.adstownId
+				$scope.adstownId.id
 				)
 	};
 
@@ -92,7 +93,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 				$scope.adstext,
 				$scope.adsimageDataUrl,
 				$scope.adscategoryId,
-				$scope.adstownId,
+				$scope.adstownId.id,
 				$scope.adschangeimage
 				)
 		
@@ -117,16 +118,8 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		$rootScope.adsId = adsId;
 		mainData.getUserAdsById(
 			function(resp){
-				$rootScope.adstitle = resp.title;
-				$rootScope.adstext = resp.text;
-				$rootScope.adsimageDataUrl = resp.imageDataUrl;
-				$rootScope.adscategoryId = resp.categoryId;
-				$rootScope.adstownId = resp.townId;
-				$location.path('/user/ads/edit');
-				console.log($rootScope.adscategoryId);
+
 			}
-			,
-			$rootScope.adsId
 			);
 
 	}

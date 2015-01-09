@@ -215,6 +215,7 @@ softUni.factory('mainData', function($http, $log,$rootScope){
 			adscategoryId,
 			adstownId
 			){
+			console.log(adstownId);
 			$http({
 					method: 'POST', 
 					url: 'http://softuni-ads.azurewebsites.net/api/user/ads',
