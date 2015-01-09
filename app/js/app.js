@@ -2,12 +2,12 @@ var softUni = angular.module('softUniModule', ['ngRoute', 'ngCookies'])
 	.config(function($routeProvider){
 		$routeProvider.when('/register', {
 			templateUrl: 'templates/register.html',
-			controller: 'SoftUniController'
+			controller: 'LoginController'
 		});
 
 		$routeProvider.when('/login', {
 			templateUrl: 'templates/login.html',
-			controller: 'SoftUniController'
+			controller: 'LoginController'
 		});
 
 		$routeProvider.when('/ads', {

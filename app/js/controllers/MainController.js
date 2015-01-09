@@ -31,16 +31,9 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 
 
 	$rootScope.location = $location;
-	function SetCredentials(uData){
-		$rootScope.userData = uData;
-		$cookieStore.put('userData', $rootScope.userData);
 
-	};
 
-	function ClearCredentials(){
-		$rootScope.userData = {};
-		$cookieStore.remove('userData');
-	};
+
 
 	addNewAdd = function(){
 		console.log($scope.adstownId);
@@ -93,7 +86,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 				$scope.adstext,
 				$scope.adsimageDataUrl,
 				$scope.adscategoryId,
-				$scope.adstownId.id,
+				$scope.adstownId,
 				$scope.adschangeimage
 				)
 		
@@ -164,52 +157,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 				)
 	};	
 
-	$scope.login = function(){
-		$scope.error = undefined;
-		$scope.dataLoading = true;
-			
-		mainData.login(
-			function(resp){
-				SetCredentials(resp);
-				$scope.dataLoading = false;
-				$location.path('/user/home');
-			},
-			$scope.username,
-			$scope.password,
-			function(errormsg){
-				$scope.error=errormsg;
-			})
 
-			
-
-			
-	};
-	$scope.register = function(){
-			$scope.error = undefined;
-			$scope.dataLoading = true;
-			mainData.register(
-				function(resp){
-					SetCredentials(resp);
-					$scope.dataLoading = false;
-					$location.path('/user/home');
-				},
-				$scope.username,
-				$scope.password,
-				$scope.confirmPassword,
-				$scope.name,
-				$scope.email,
-				$scope.phone,
-				$scope.town,
-				function(errormsg){
-					$scope.error=errormsg;
-				})
-			
-
-	}
-
-	$scope.logout = function(){
-		ClearCredentials();
-	};
 
 
 	$scope.currentCategory = undefined;
@@ -255,6 +203,15 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		$scope.currentTown = undefined;
 		$scope.currentTownName = "All";
 	}
+
+	$scope.logout = function(){
+		ClearCredentials();
+	};
+
+	function ClearCredentials(){
+		$rootScope.userData = {};
+		$cookieStore.remove('userData');
+	};
 
 });
 
