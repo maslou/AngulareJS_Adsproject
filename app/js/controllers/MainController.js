@@ -29,28 +29,23 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		$scope.categories=resp;
 	});
 
-
 	$rootScope.location = $location;
 
-
-
-
 	addNewAdd = function(){
-		console.log($scope.adstownId);
 		mainData.addAds(
-				function(resp){
-					$scope.showsuccess = true;
-					console.log(resp);
-				},
-				function(errormsg){
-					$scope.error=errormsg;
-				},
-				$scope.adstitle,
-				$scope.adstext,
-				$scope.adsimageDataUrl,
-				$scope.adscategoryId,
-				$scope.adstownId.id
-				)
+			function(resp){
+				$scope.showsuccess = true;
+				console.log(resp);
+			},
+			function(errormsg){
+				$scope.error=errormsg;
+			},
+			$scope.adstitle,
+			$scope.adstext,
+			$scope.adsimageDataUrl,
+			$scope.adscategoryId,
+			$scope.adstownId.id
+			)
 	};
 
 	$scope.onAddNewClick = function(){
@@ -74,91 +69,81 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 
 	function editAds(adsId){
 		mainData.adsEdit(
-				function(resp){
-					$scope.showsuccess = true;
-					console.log(resp);
-				},
-				function(errormsg){
-					$scope.error=errormsg;
-				},
-				$scope.adsId,
-				$scope.adstitle,
-				$scope.adstext,
-				$scope.adsimageDataUrl,
-				$scope.adscategoryId,
-				$scope.adstownId,
-				$scope.adschangeimage
-				)
-		
-
+			function(resp){
+				$scope.showsuccess = true;
+				console.log(resp);
+			},
+			function(errormsg){
+				$scope.error=errormsg;
+			},
+			$scope.adsId,
+			$scope.adstitle,
+			$scope.adstext,
+			$scope.adsimageDataUrl,
+			$scope.adscategoryId,
+			$scope.adstownId,
+			$scope.adschangeimage
+			);
 	}
-
 
 	$scope.adsDeActiv = function adsDeActiv(adsId){
 		mainData.adsDeActiv(
-				function(resp){
-					$scope.showsuccess = true;
-					console.log(resp);
-				},
-				function(errormsg){
-					$scope.error=errormsg;
-				},
-				adsId
-				)
+			function(resp){
+				$scope.showsuccess = true;
+				console.log(resp);
+			},
+			function(errormsg){
+				$scope.error=errormsg;
+			},
+			adsId
+		)
 	};
 
 	$scope.adsEdit = function(adsId){
 		$rootScope.adsId = adsId;
 		mainData.getUserAdsById(
 			function(resp){
-
-			}
-			);
-
+			});
 	}
 
 	$scope.adsRePublish = function adsRePublish(adsId){
 		mainData.adsRePublish(
-				function(resp){
-					$scope.showsuccess = true;
-					console.log(resp);
-				},
-				function(errormsg){
-					$scope.error=errormsg;
-				},
-				adsId
-				)
+			function(resp){
+				$scope.showsuccess = true;
+				console.log(resp);
+			},
+			function(errormsg){
+				$scope.error=errormsg;
+			},
+			adsId
+		);
 	};
 
 	$scope.adsDel = function adsDel(adsId){
 		mainData.adsDel(
-				function(resp){
-					$scope.showsuccess = true;
-					console.log(resp);
-				},
-				function(errormsg){
-					$scope.error=errormsg;
-				},
-				adsId
-				)
+			function(resp){
+				$scope.showsuccess = true;
+				console.log(resp);
+			},
+			function(errormsg){
+				$scope.error=errormsg;
+			},
+			adsId
+		);
 	};
 
 	$scope.adsActive = function adsActive(adsId){
-		console.log(adsId)
 		mainData.adsActive(
-				function(resp){
-					$scope.showsuccess = true;
-					console.log(resp);
-				},
-				function(errormsg){
-					$scope.error=errormsg;
-				},
-				adsId
-				)
+			function(resp){
+				$scope.showsuccess = true;
+				console.log(resp);
+			},
+			function(errormsg){
+				$scope.error=errormsg;
+			},
+			adsId
+		);
 	};	
-
-
-
 
 	$scope.currentCategory = undefined;
 	$scope.currentCategoryName = "All";
@@ -174,7 +159,6 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 	}
 	
 	$scope.setCurrCategory = setCurrCategory;
-
 	$scope.currentTown = undefined;
 	$scope.currentTownName = "All";
 
@@ -189,12 +173,10 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		}
 	}
 
-
 	$scope.setSelectedStatus = function setSelectedStatus(seladsStatus){
 		$scope.selectedStatus = seladsStatus;
 		
 	};
-
 	
 	$scope.setCurrTown = setCurrTown;
 	$scope.resetCategoryAndTown = function(){
