@@ -44,6 +44,15 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 			function(resp){
 				$scope.showsuccess = true;
 				console.log(resp);
+				mainData.getUserAllAds(function(nresp){
+				$scope.userads=nresp;
+					if($location.path() =='/ads'){
+						$scope.showAdds=$scope.allads;
+					}
+					else{
+						$scope.showAdds=$scope.userads;
+					}
+				});
 			},
 			function(errormsg){
 				$scope.error=errormsg;
@@ -61,7 +70,15 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		mainData.adsRePublish(
 			function(resp){
 				$scope.showsuccess = true;
-				console.log(resp);
+				mainData.getUserAllAds(function(nresp){
+				$scope.userads=nresp;
+					if($location.path() =='/ads'){
+						$scope.showAdds=$scope.allads;
+					}
+					else{
+						$scope.showAdds=$scope.userads;
+					}
+				});
 			},
 			function(errormsg){
 				$scope.error=errormsg;
@@ -74,7 +91,15 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		mainData.adsDel(
 			function(resp){
 				$scope.showsuccess = true;
-				console.log(resp);
+				mainData.getUserAllAds(function(nresp){
+				$scope.userads=nresp;
+					if($location.path() =='/ads'){
+						$scope.showAdds=$scope.allads;
+					}
+					else{
+						$scope.showAdds=$scope.userads;
+					}
+				});
 			},
 			function(errormsg){
 				$scope.error=errormsg;
@@ -87,7 +112,15 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		mainData.adsActive(
 			function(resp){
 				$scope.showsuccess = true;
-				console.log(resp);
+				mainData.getUserAllAds(function(nresp){
+				$scope.userads=nresp;
+					if($location.path() =='/ads'){
+						$scope.showAdds=$scope.allads;
+					}
+					else{
+						$scope.showAdds=$scope.userads;
+					}
+				});
 			},
 			function(errormsg){
 				$scope.error=errormsg;
