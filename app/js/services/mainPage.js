@@ -1,11 +1,11 @@
 softUni.factory('mainData', function($http, $log,$rootScope){
 	var UserData;
 	return {
-		getAllAds: function(success){
+		getAllAds: function(success, pageSize, startpage, townid, categoryid){
 			$http({
 				method: 'GET', 
 				url: 'http://softuni-ads.azurewebsites.net/api/ads',
-				params: {PageSize:5, startpage:1}
+				params: {PageSize:5, startpage:1, townid: townid, categoryid: categoryid}
 				})
 			.success(function(data, status, headers, config){
 				success(data);

@@ -21,7 +21,6 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 	});
 
 	mainData.getAllTowns(function(resp){
-		
 		$scope.towns=resp;
 	});
 
@@ -156,6 +155,16 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		else{
 			$scope.currentCategoryName = "All";
 		}	
+
+		mainData.getAllAds(function(resp){
+			$scope.allads=resp;
+				if($location.path() =='/ads'){
+					$scope.showAdds=$scope.allads;
+				}
+				else{
+					$scope.showAdds=$scope.userads;
+				}
+			} , undefined, undefined, $scope.currentTown, $scope.currentCategory);
 	}
 	
 	$scope.setCurrCategory = setCurrCategory;
@@ -171,12 +180,18 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		else{
 			$scope.currentTownName = "All";
 		}
+
+		mainData.getAllAds(function(resp){
+			$scope.allads=resp;
+				if($location.path() =='/ads'){
+					$scope.showAdds=$scope.allads;
+				}
+				else{
+					$scope.showAdds=$scope.userads;
+				}
+			} , undefined, undefined, $scope.currentTown, $scope.currentCategory);
 	}
 
-	$scope.setSelectedStatus = function setSelectedStatus(seladsStatus){
-		$scope.selectedStatus = seladsStatus;
-		
-	};
 	
 	$scope.setCurrTown = setCurrTown;
 	$scope.resetCategoryAndTown = function(){
@@ -185,6 +200,11 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		$scope.currentTown = undefined;
 		$scope.currentTownName = "All";
 	}
+
+	$scope.setSelectedStatus = function setSelectedStatus(seladsStatus){
+		$scope.selectedStatus = seladsStatus;
+		
+	};
 
 	$scope.logout = function(){
 		ClearCredentials();
