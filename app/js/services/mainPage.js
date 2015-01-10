@@ -243,6 +243,24 @@ softUni.factory('mainData', function($http, $log,$rootScope){
 			}
 		},
 
+		chgUserPass: function(success, error, data){
+			if ($rootScope.userData.username){
+				$http({
+					method: 'PUT', 
+					url: 'http://softuni-ads.azurewebsites.net/api/user/changepassword',
+					headers: {Authorization: 'Bearer ' + $rootScope.userData.access_token},
+					data: data
+				})
+				.success(function(data, status, headers, config){
+					success(data);
+					
+				})
+				.error(function(data, status, headers, config){
+					error(data.modelState)
+					
+				})
+			}
+		},
 		arrObjIndexOf: function arrObjIndexOf(objArr, sValue){
 		
 			for (var i = 0; i < objArr.length; i++){

@@ -28,4 +28,18 @@ softUni.controller('UserProfile',
 					townid: $scope.userTown.id
 				})
 		};
+
+		$scope.editPass = function(){
+			$scope.showsuccessPass = false;
+			$scope.errorPass = undefined;
+			mainData.chgUserPass(
+				function(resp){$scope.showsuccessPass = true;},
+				function(error){$scope.errorPass = error},
+				{
+					oldPassword: $scope.oldPassword,
+					newPassword: $scope.newPassword ,
+					confirmPassword: $scope.confNewPassword
+				})
+		};
+
 });

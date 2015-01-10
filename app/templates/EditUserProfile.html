@@ -1,6 +1,6 @@
  <div class="row"> 
   <div class = "col-md-3"></div>
-  <div class = "col-md-6">    
+  <div class = "col-md-3">    
     <div class="well bs-component">
     <div ng-show="error" class="alert alert-danger">{{error}}</div>
     <div ng-show="showsuccess" class="alert alert-success">Profile Update Susscessffyl.</div>
@@ -39,10 +39,50 @@
             <div class="form-group">
               <div class="col-sm-7 col-lg-offset-3">
                 <button type="submit" ng-disabled="formEditProfile.$invalid" class="btn btn-danger">Update</button>
-                 <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
             </div>
           </fieldset>
       </form>
     </div>
+  </div>
+  <div class = "col-md-5">
+    <div class="well bs-component">
+      <div ng-show="errorPass" class="alert alert-danger">{{errorPass}}</div>
+      <div ng-show="showsuccessPass" class="alert alert-success">Password Update Susscessffyl.</div>
+    
+    <form class="form-horizontal" name="formEditPass" ng-submit="editPass()" role="formEditPass">
+      <fieldset>
+        <legend>Change Password</legend>
+
+        <div class="form-group">
+              <label for="oldPassword" class="col-lg-5 control-label">Old Password</label>
+              <div class="col-sm-5">
+                <input name="oldPassword" class="form-control" id="oldPassword" type="password" ng-model="oldPassword" required>
+                <span ng-show="formEditPass.oldPassword.$dirty && formEditPass.oldPassword.$error.required" class="help-block">OLD Password is required</span>
+              </div>
+        </div>
+
+        <div class="form-group">
+              <label for="newPassword" class="col-lg-5 control-label">New Password</label>
+              <div class="col-sm-5">
+                <input name="newPassword" class="form-control" id="newPassword" type="password" ng-model="newPassword" required>
+                <span ng-show="formEditPass.newPassword.$dirty && formEditPass.newPassword.$error.required" class="help-block">New Password is required</span>
+              </div>
+        </div>
+
+        <div class="form-group">
+              <label for="confNewPassword" class="col-lg-5 control-label">Confirm New Password</label>
+              <div class="col-sm-5">
+                <input name="confNewPassword" class="form-control" id="confNewPassword" type="password" ng-model="confNewPassword" required>
+                <span ng-show="formEditPass.confNewPassword.$dirty && formEditPass.confNewPassword.$error.required" class="help-block">Confirm New Password is required</span>
+              </div>
+        </div>
+
+        <div class="form-group">
+              <div class="col-sm-7 col-lg-offset-5">
+                <button type="submit" ng-disabled="formEditPass.$invalid" class="btn btn-danger">Change Password</button>
+            </div>
+      </fieldset>
+    </form>
+    
   </div>
 </div>
