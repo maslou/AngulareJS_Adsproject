@@ -137,6 +137,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 	$scope.currentCategoryName = "All";
 
 	function setCurrCategory(cat, catName){
+		startpage = 1;
 		$scope.currentCategory=cat;
 		if(catName){
 			$scope.currentCategoryName = catName;
@@ -154,6 +155,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 
 	function setCurrTown(town, townName){
 		$scope.currentTown=town;
+		startpage = 1;
 
 		if(townName){
 			$scope.currentTownName = townName;
