@@ -207,6 +207,51 @@ softUni.factory('mainData', function($http, $log,$rootScope){
 			})
 
 		},
+
+		getUserProf: function(success){
+			if ($rootScope.userData.username){
+				$http({
+					method: 'GET', 
+					url: 'http://softuni-ads.azurewebsites.net/api/user/profile',
+					headers: {Authorization: 'Bearer ' + $rootScope.userData.access_token}
+					})
+				.success(function(data, status, headers, config){
+					success(data);
+					$log.info(data);
+				})
+				.error(function(data, status, headers, config){
+					$log.warn(data);
+				})
+			}
+		},
+		updateUserProf: function(success, error, data){
+			if ($rootScope.userData.username){
+				$http({
+					method: 'PUT', 
+					url: 'http://softuni-ads.azurewebsites.net/api/user/profile',
+					headers: {Authorization: 'Bearer ' + $rootScope.userData.access_token},
+					data: data
+				})
+				.success(function(data, status, headers, config){
+					success(data);
+					
+				})
+				.error(function(data, status, headers, config){
+					error(data.modelState)
+					$log.warn(data);
+				})
+			}
+		},
+
+		arrObjIndexOf: function arrObjIndexOf(objArr, sValue){
+		
+			for (var i = 0; i < objArr.length; i++){
+				if(objArr[i].id == sValue.id){
+					return i;
+				}
+			}
+			return -1;
+		},
 	}
 });
 

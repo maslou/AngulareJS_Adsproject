@@ -30,6 +30,11 @@ var softUni = angular.module('softUniModule', ['ngRoute', 'ngCookies'])
 			controller: 'AddEditAds'
 		});
 
+		$routeProvider.when('/user/profile', {
+			templateUrl: 'templates/EditUserProfile.html',
+			controller: 'UserProfile'
+		});
+
 		$routeProvider.otherwise({redirectTo: '/ads'});
 	})
 

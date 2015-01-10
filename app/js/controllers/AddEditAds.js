@@ -1,21 +1,27 @@
 softUni.controller('AddEditAds', 
 					function($scope, mainData, $location, $rootScope, $cookieStore){
 
-	function arrObjIndexOf(objArr, sValue){
-		
-		for (var i = 0; i < objArr.length; i++){
-			if(objArr[i].id == sValue.id){
-				return i;
-			}
+	mainData.getUserProf(function(resp){
+		if($location.path() == '/user/ads/publish'){
+			var indxTown = mainData.arrObjIndexOf($scope.towns, 
+					{id: resp.townId, name: ""});
+			$scope.adsData = {
+					title: '',
+					text: '',
+					imageDataUrl: '',
+					town: $scope.towns[indxTown],
+					category:{}
+					// {id: resp.categoryId, name: resp.categoryName}
+				};
+				console.log(resp.townId);
 		}
-		return -1;
-	};
+	});
 
 	mainData.getUserAdsById(
 		function(resp){
-			var indxTown = arrObjIndexOf($scope.towns, 
+			var indxTown = mainData.arrObjIndexOf($scope.towns, 
 				{id: resp.townId, name: resp.townName});
-			var indxCat = arrObjIndexOf($scope.categories,
+			var indxCat = mainData.arrObjIndexOf($scope.categories,
 				{id: resp.categoryId, name: resp.categoryName});
 			$scope.adsData = 
 			{

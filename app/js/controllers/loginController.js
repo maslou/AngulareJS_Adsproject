@@ -1,4 +1,5 @@
-softUni.controller('LoginController', function($scope, $rootScope, $cookieStore, mainData,  $location){
+softUni.controller('LoginController', 
+	function($scope, $rootScope, $cookieStore, mainData,  $location){
 	$scope.login = function(){
 		$scope.error = undefined;
 		$scope.dataLoading = true;
@@ -42,6 +43,7 @@ softUni.controller('LoginController', function($scope, $rootScope, $cookieStore,
 	function SetCredentials(uData){
 		$rootScope.userData = uData;
 		$cookieStore.put('userData', $rootScope.userData);
+		console.log($rootScope.userData);
 
 	};
 
