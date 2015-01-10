@@ -12,7 +12,7 @@
             <div class="form-group">
               <label for="adstitle" class="col-lg-2 control-label">Title</label>
               <div class="col-lg-10">
-                <input name="adstitle" class="form-control" id="inputadstitle" placeholder="Title" type="text" ng-model="adstitle" required>
+                <input name="adstitle" class="form-control" id="inputadstitle" placeholder="Title" type="text" ng-model="adsData.title" required>
                 <span ng-show="formAddAds.adstitle.$dirty && formAddAds.adstitle.$error.required" class="help-block">Title is required</span>
               </div>
             </div>
@@ -20,7 +20,7 @@
             <div class="form-group">
               <label for="title" class="col-lg-2 control-label">Text</label>
               <div class="col-lg-10">
-                <textarea name="adstext" class="form-control" id="inputadstext" placeholder="Text" type="textarea" ng-model="adstext" required rows="3"></textarea>
+                <textarea name="adstext" class="form-control" id="inputadstext" placeholder="Text" type="textarea" ng-model="adsData.text" required rows="3"></textarea>
                 <span ng-show="formAddAds.adstext.$dirty && formAddAds.adstext.$error.required" class="help-block">Text is required</span>
               </div>
             </div>
@@ -28,10 +28,7 @@
             <div class="form-group">
               <label for="adstownId" class="col-lg-3 control-label">Town</label>
               <div class="col-sm-7">
-                <select data-ng-options="t.name for t in towns" name="adstownId" class="form-control" id="adstown" ng-model="adstownId">
-                  <option></option>
-                  <option value={{town.id}} ng-repeat="town in towns">{{town.name}}</option>
-                
+                <select data-ng-options="t.name for t in towns" name="adsData.town" class="form-control" id="adstown" ng-model="adsData.town">
                 </select>
                 <br>
               </div>
@@ -40,9 +37,7 @@
             <div class="form-group">
               <label for="adscategoryId" class="col-lg-3 control-label">Category</label>
               <div class="col-sm-7">
-                <select name="adscategoryId" class="form-control" id="adscategoryId" ng-model="adscategoryId">
-                  <option></option>
-                  <option value={{cat.id}} ng-repeat="cat in categories">{{cat.name}}</option>
+                <select data-ng-options="cat.name for cat in categories" name="adscategoryId" class="form-control" id="adscategoryId" ng-model="adsData.category">
                 </select>
                 <br>
               </div>

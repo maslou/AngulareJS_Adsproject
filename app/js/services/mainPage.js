@@ -42,7 +42,7 @@ softUni.factory('mainData', function($http, $log,$rootScope){
 					headers: {Authorization: 'Bearer ' + $rootScope.userData.access_token},
 					})
 				.success(function(data, status, headers, config){
-					$log.info(data);
+					//$log.info(data);
 					success(data);
 					
 				})
@@ -72,31 +72,19 @@ softUni.factory('mainData', function($http, $log,$rootScope){
 			success,
 			error,
 			adsId,
-			adstitle,
-			adstext,
-			adsimageDataUrl,
-			adscategoryId,
-			adstownId,
-			adschangeimage
+			adsData
 			){
 				$http({
 					method: 'PUT', 
 					url: 'http://softuni-ads.azurewebsites.net/api/user/ads/' + adsId,
 					headers: {Authorization: 'Bearer ' + $rootScope.userData.access_token},
-					data: {
-						title: adstitle,
-						text: adstext,
-						imageDataUrl: adsimageDataUrl,
-						categoryId: adscategoryId,
-						townId: adstownId,
-						changeimage: adschangeimage
-					}
+					data: adsData
 				})
 				.success(function(data, status, headers, config){
 					success(data);
 				})
 				.error(function(data, status, headers, config){
-					$log.warn(data);
+					
 					error(data.modelState)
 				})
 			},
@@ -201,24 +189,13 @@ softUni.factory('mainData', function($http, $log,$rootScope){
 		addAds: function(
 			success,
 			error,
-			adstitle,
-			adstext,
-			adsimageDataUrl,
-			adscategoryId,
-			adstownId
+			adsData
 			){
 				$http({
 						method: 'POST', 
 						url: 'http://softuni-ads.azurewebsites.net/api/user/ads',
 						headers: {Authorization: 'Bearer ' + $rootScope.userData.access_token},
-						data: 
-						{
-							title: adstitle,
-							text: adstext,
-							imageDataUrl: adsimageDataUrl,
-							categoryId: adscategoryId,
-							townId: adstownId
-						}
+						data: adsData
 						}
 					)
 				.success(function(data, status, headers, config){
