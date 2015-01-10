@@ -1,24 +1,60 @@
 softUni.controller('SoftUniController', function($scope, mainData, $location, $rootScope, $cookieStore){
-	
-	mainData.getAllAds(function(resp){
-		$scope.allads=resp;
-			if($location.path() =='/ads'){
-				$scope.showAdds=$scope.allads;
-			}
-			else{
-				$scope.showAdds=$scope.userads;
-			}
-	});
+	var pageSize = 10;
+	var startpage = 1;
+	$scope.selectPage = function(number){
+		startpage = number;
+		if($location.path() =='/ads'){
+			callGetAllAds();
+		}
+		else{
+			callGetUserAds();
+		}
 
-	mainData.getUserAllAds(function(resp){
-		$scope.userads=resp;
+	};
+	function setPaging(numPages){
+		console.log(numPages);
+		$scope.pages = [];
+		for (var i = 1; i <= numPages; i++) {
+			var tempPageObj = {number: i, text:i};
+			$scope.pages.push(tempPageObj);
+		};
+		
+	};
+
+	callGetAllAds = function(){
+		mainData.getAllAds(function(resp){
+		$scope.allads=resp;
+		if($location.path() =='/ads'){
+			$scope.showAdds=$scope.allads;
+			setPaging(resp.numPages)
+		}
+		else
+		{
+		$scope.showAdds=$scope.userads;
+		}
+	},
+	pageSize, startpage, $scope.currentTown, $scope.currentCategory)
+	};
+
+	callGetAllAds();
+
+	callGetUserAds = function(){ 
+		mainData.getUserAllAds(function(resp){
+			$scope.userads=resp;
+			
 			if($location.path() =='/ads'){
 				$scope.showAdds=$scope.allads;
 			}
-			else{
+			else
+			{
 				$scope.showAdds=$scope.userads;
+				setPaging(resp.numPages);
 			}
-	});
+		}, 
+		pageSize, startpage)
+	};
+
+	callGetUserAds();
 
 	mainData.getAllTowns(function(resp){
 		$scope.towns=resp;
@@ -44,15 +80,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 			function(resp){
 				$scope.showsuccess = true;
 				console.log(resp);
-				mainData.getUserAllAds(function(nresp){
-				$scope.userads=nresp;
-					if($location.path() =='/ads'){
-						$scope.showAdds=$scope.allads;
-					}
-					else{
-						$scope.showAdds=$scope.userads;
-					}
-				});
+				callGetUserAds();
 			},
 			function(errormsg){
 				$scope.error=errormsg;
@@ -70,15 +98,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		mainData.adsRePublish(
 			function(resp){
 				$scope.showsuccess = true;
-				mainData.getUserAllAds(function(nresp){
-				$scope.userads=nresp;
-					if($location.path() =='/ads'){
-						$scope.showAdds=$scope.allads;
-					}
-					else{
-						$scope.showAdds=$scope.userads;
-					}
-				});
+				callGetUserAds();
 			},
 			function(errormsg){
 				$scope.error=errormsg;
@@ -91,15 +111,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		mainData.adsDel(
 			function(resp){
 				$scope.showsuccess = true;
-				mainData.getUserAllAds(function(nresp){
-				$scope.userads=nresp;
-					if($location.path() =='/ads'){
-						$scope.showAdds=$scope.allads;
-					}
-					else{
-						$scope.showAdds=$scope.userads;
-					}
-				});
+				callGetUserAds();
 			},
 			function(errormsg){
 				$scope.error=errormsg;
@@ -112,15 +124,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		mainData.adsActive(
 			function(resp){
 				$scope.showsuccess = true;
-				mainData.getUserAllAds(function(nresp){
-				$scope.userads=nresp;
-					if($location.path() =='/ads'){
-						$scope.showAdds=$scope.allads;
-					}
-					else{
-						$scope.showAdds=$scope.userads;
-					}
-				});
+				callGetUserAds();
 			},
 			function(errormsg){
 				$scope.error=errormsg;
@@ -141,15 +145,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 			$scope.currentCategoryName = "All";
 		}	
 
-		mainData.getAllAds(function(resp){
-			$scope.allads=resp;
-				if($location.path() =='/ads'){
-					$scope.showAdds=$scope.allads;
-				}
-				else{
-					$scope.showAdds=$scope.userads;
-				}
-			} , undefined, undefined, $scope.currentTown, $scope.currentCategory);
+		callGetAllAds();
 	}
 	
 	$scope.setCurrCategory = setCurrCategory;
@@ -166,15 +162,7 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 			$scope.currentTownName = "All";
 		}
 
-		mainData.getAllAds(function(resp){
-			$scope.allads=resp;
-				if($location.path() =='/ads'){
-					$scope.showAdds=$scope.allads;
-				}
-				else{
-					$scope.showAdds=$scope.userads;
-				}
-			} , undefined, undefined, $scope.currentTown, $scope.currentCategory);
+		callGetAllAds();
 	}
 
 	

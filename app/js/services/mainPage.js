@@ -2,10 +2,11 @@ softUni.factory('mainData', function($http, $log,$rootScope){
 	var UserData;
 	return {
 		getAllAds: function(success, pageSize, startpage, townid, categoryid){
+
 			$http({
 				method: 'GET', 
 				url: 'http://softuni-ads.azurewebsites.net/api/ads',
-				params: {PageSize:5, startpage:1, townid: townid, categoryid: categoryid}
+				params: {PageSize:pageSize, startpage:startpage, townid: townid, categoryid: categoryid}
 				})
 			.success(function(data, status, headers, config){
 				success(data);
@@ -16,17 +17,17 @@ softUni.factory('mainData', function($http, $log,$rootScope){
 
 		},
 
-		getUserAllAds: function(success){
+		getUserAllAds: function(success, pageSize, startpage){
 			if ($rootScope.userData.username){
 				$http({
 					method: 'GET', 
 					url: 'http://softuni-ads.azurewebsites.net/api/user/ads',
 					headers: {Authorization: 'Bearer ' + $rootScope.userData.access_token},
-					params: {PageSize:5, startpage:1}
+					params: {PageSize: pageSize, startpage: startpage}
 					})
 				.success(function(data, status, headers, config){
 					success(data);
-					//$log.info(data);
+					$log.info(data);
 				})
 				.error(function(data, status, headers, config){
 					$log.warn(data);
