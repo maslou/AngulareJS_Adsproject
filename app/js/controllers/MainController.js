@@ -30,23 +30,6 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 
 	$rootScope.location = $location;
 
-	addNewAdd = function(){
-		mainData.addAds(
-			function(resp){
-				$scope.showsuccess = true;
-				console.log(resp);
-			},
-			function(errormsg){
-				$scope.error=errormsg;
-			},
-			$scope.adstitle,
-			$scope.adstext,
-			$scope.adsimageDataUrl,
-			$scope.adscategoryId,
-			$scope.adstownId.id
-			)
-	};
-
 	$scope.onAddNewClick = function(){
 		$rootScope.adstitle = undefined;
 		$rootScope.adstext = undefined;
@@ -54,35 +37,6 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		$rootScope.adscategoryId = undefined;
 		$rootScope.adstownId = undefined;
 		$location.path('/user/ads/publish');
-	}
-
-	$scope.addNewAddOrEdit = function(adsId){
-		
-		if ($location.path() == '/user/ads/publish'){
-			addNewAdd();
-		}
-		else if ($location.path() == '/user/ads/edit') {
-			editAds(adsId);
-		}
-	}
-
-	function editAds(adsId){
-		mainData.adsEdit(
-			function(resp){
-				$scope.showsuccess = true;
-				console.log(resp);
-			},
-			function(errormsg){
-				$scope.error=errormsg;
-			},
-			$scope.adsId,
-			$scope.adstitle,
-			$scope.adstext,
-			$scope.adsimageDataUrl,
-			$scope.adscategoryId,
-			$scope.adstownId,
-			$scope.adschangeimage
-			);
 	}
 
 	$scope.adsDeActiv = function adsDeActiv(adsId){
@@ -98,11 +52,9 @@ softUni.controller('SoftUniController', function($scope, mainData, $location, $r
 		)
 	};
 
-	$scope.adsEdit = function(adsId){
+	$scope.adsEditClick = function(adsId){
 		$rootScope.adsId = adsId;
-		mainData.getUserAdsById(
-			function(resp){
-			});
+		$location.path('/user/ads/edit');
 	}
 
 	$scope.adsRePublish = function adsRePublish(adsId){
